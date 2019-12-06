@@ -1,0 +1,214 @@
+<!--ธีรวุฒิ ศรีเงิน 6035247010 !--> 
+<html>
+<head>
+<title>Task13</title>
+<script type="text/javascript">
+	function Main(){
+	
+		//Bind Click event on checkboxes (not inline approach this time)
+		document.getElementById('chk1').onclick = chkClicked;
+		document.getElementById('chk2').onclick = chkClicked;
+		document.getElementById('chk3').onclick = chkClicked;
+		document.getElementById('chk4').onclick = chkClicked;
+		document.getElementById('chk5').onclick = chkClicked;
+		document.getElementById('chk6').onclick = chkClicked;
+		document.getElementById('chk7').onclick = chkClicked;
+		document.getElementById('chk8').onclick = chkClicked;
+		document.getElementById('chk9').onclick = chkClicked;
+		document.getElementById('chk10').onclick = chkClicked;
+	
+		
+		var btn = document.getElementById('btnCalculate');
+		btn.onclick = function(){
+		
+			document.getElementById("spCAVG").innerText='';
+			var avg_sum=0;
+			var counter=0;
+			for(var i=1;i<=10;i++)
+			{
+				var data=getTextBoxValue('chk'+i)
+				if(data==null)
+				{
+					continue;
+				}
+				else
+				{
+					var avg=Number(data);
+					if(avg>=0 && avg<=4)
+					{
+						avg_sum=avg_sum+avg;
+						counter++;
+					}
+					else
+					{
+						alert("เกรดมีแค่ 0-4 ไอ้หนู!")
+						return;
+					}
+				}
+
+
+			}
+			if(counter > 0)
+			{
+			debugger
+			var CAVG=avg_sum/counter;
+			spCAVG=parseFloat(CAVG).toFixed(2);
+			document.getElementById("spCAVG").innerText=spCAVG;
+			}
+			else
+			{
+				alert('NO valid AVG exists')
+			}
+			//Write your Logic Here
+			//Compute CAVG & Show it in 'spCAVG'
+
+		};
+		
+		function getTextBoxValue(chkId)
+		{
+			var ch=document.getElementById(chkId)
+			if(ch.checked)
+			{
+				var relatedTextBoxId = findTxtIdByChkId(chkId);
+				var txtbox = document.getElementById(relatedTextBoxId);
+
+				return txtbox.value;
+			}
+			else
+			{
+			return null;	
+			}
+		}
+
+	}//end of Main
+	
+	
+	function chkClicked(){
+		//Here this is representing 'caller' object
+		
+		var chkObj = this;
+		var relatedTextBoxId = findTxtIdByChkId(chkObj.id);
+		
+		if(relatedTextBoxId != "")
+		{
+			var elem = document.getElementById(relatedTextBoxId);
+			if(chkObj.checked == true)
+			{
+				elem.removeAttribute('disabled');
+			}
+			else {
+				elem.value = "";
+				elem.setAttribute('disabled',true);
+			}
+		}
+	}
+	
+	//Find Relevant TextBox Id by using CheckBox Id
+	function findTxtIdByChkId(chkId)
+	{
+		if(chkId == "chk1"){
+			return  "txt1";
+		}
+		else if(chkId == "chk2"){
+			return  "txt2";
+		}
+		else if(chkId == "chk3"){
+			return  "txt3";
+		}
+		else if(chkId == "chk4"){
+			return  "txt4";
+		}
+		else if(chkId == "chk5"){
+			return  "txt5";
+		}
+		else if(chkId == "chk6"){
+			return  "txt6";
+		}
+		else if(chkId == "chk7"){
+			return  "txt7";
+		}
+		else if(chkId == "chk8"){
+			return  "txt8";
+		}
+		else if(chkId == "chk9"){
+			return  "txt9";
+		}
+		else if(chkId == "chk10"){
+			return  "txt10";
+		}
+	}
+	
+</script>
+
+</head>
+<body onload="Main();">
+	<table border="1px">
+		<thead>
+			<tr>
+				<td>Semester No</td>
+                <td>AVG</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td><input type="text" id="txt1" disabled></td>
+				<td><input type="checkbox" id="chk1" ></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><input type="text" id="txt2" disabled></td>
+				<td><input type="checkbox" id="chk2" ></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><input type="text" id="txt3" disabled></td>
+				<td><input type="checkbox" id="chk3" ></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><input type="text" id="txt4" disabled></td>
+				<td><input type="checkbox" id="chk4" ></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><input type="text" id="txt5" disabled></td>
+				<td><input type="checkbox" id="chk5" ></td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><input type="text" id="txt6" disabled></td>
+				<td><input type="checkbox" id="chk6" ></td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><input type="text" id="txt7" disabled></td>
+				<td><input type="checkbox" id="chk7" ></td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td><input type="text" id="txt8" disabled></td>
+				<td><input type="checkbox" id="chk8" ></td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td><input type="text" id="txt9" disabled></td>
+				<td><input type="checkbox" id="chk9" ></td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><input type="text" id="txt10" disabled></td>
+				<td><input type="checkbox" id="chk10" ></td>
+			</tr>
+			<tr>
+                <td>Myname : นายธีรวุฒิ ศรีเงิน 6035247010</td>
+            </tr>
+		</tbody>
+	</table>
+	<div>
+	<button id="btnCalculate">คำนวณเกรดเฉลี่ย</button>
+	เกรดเฉลี่ยของคุณ: <span id="spCAVG"></span>
+	</div>
+</body>
+</html>
